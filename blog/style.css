@@ -1,0 +1,174 @@
+body {
+    color: #f5f5f5;
+    background: #004466;
+    background-image: -webkit-linear-gradient(90deg, #00663c, #004466);
+    background-image: -o-linear-gradient(90deg, #00663c, #004466);
+    background-image: -moz-linear-gradient(90deg, #00663c, #004466);
+    background-image: linear-gradient(90deg, #00663c, #004466);
+}
+.container {
+    max-width: 700px;
+}
+.subhead {
+    margin-bottom: 0;
+    font-family: "Gilroy-Light", sans-serif;
+    font-size: 70px;
+}
+.head {
+    font-family: "Gilroy-Bold", sans-serif;
+    font-size: 100px;
+}
+/* About */
+#about {
+    opacity: 0;
+}
+#about .container:hover p {
+    color: rgba(245, 245, 245, 0.3);
+}
+#about .container:hover p span.keyword {
+    color: #f5f5f5;
+}
+#about .container p {
+    color: #f5f5f5;
+    font-family: "Hans Kendrick", sans-serif;
+    font-size: 40px;
+    transition: color .5s ease;
+}
+#about .container p:first-of-type {
+    margin-bottom: 40px;
+}
+.keyword {
+    transition: color .5s ease;
+}
+/* Projects */
+#projects {
+    opacity: 0;
+}
+.project {
+    margin-top: 5px;
+    margin-bottom: 70px;
+    color: #f5f5f5;
+}
+.project-title {
+    color: #f5f5f5;
+    font-size: 32px;
+    text-decoration: none;
+    transition: color .2s ease, border .2s ease;
+}
+.project p {
+    font-size: 40px;
+    font-family: "Hans Kendrick", sans-serif;
+}
+.colicious .project-title:hover {
+    color: #E43956;
+    border-bottom: 2px solid #E43956;
+}
+.moon .project-title:hover {
+    color: #615cfa;
+    border-bottom: 2px solid #615cfa;
+}
+.slash .project-title:hover {
+    color: #FF8159;
+    border-bottom: 2px solid #FF8159;
+}
+.wade .project-title:hover {
+    color: #50ffbb;
+    border-bottom: 2px solid #50ffbb;
+}
+.wing .project-title:hover {
+    color: #239FB0;
+    border-bottom: 2px solid #239FB0;
+}
+/* Social */
+#social {
+    opacity: 0;
+}
+#social .container p {
+    font-size: 40px;
+    font-family: "Hans Kendrick", sans-serif;
+}
+#social .container p:first-of-type {
+    margin-bottom: 40px;
+}
+#social .container p a {
+    color: #f5f5f5;
+    border-bottom: 2px solid #f5f5f5;
+    text-decoration: none;
+    transition: color .2s ease, border .2s ease;
+}
+#social .container p a:hover {
+    color: #AAAAAA;
+    border-bottom: 2px solid #AAAAAA;
+}
+#logo {
+    position: absolute;
+    left: 7%;
+    top: 7%;
+    bottom: 7%;
+    font-size: 70px;
+}
+::selection {
+    color: #111111;
+    background-color: #f5f5f5;
+}
+.fadeIn {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-delay: 0.1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@media screen and (max-width: 768px) {
+    #logo img {
+        height: 40px;
+        width: auto;
+    }
+    .head {
+        font-size: 65px;
+    }
+    .subhead {
+        font-size: 45px;
+    }
+    #about .container p,
+    #projects .project p,
+    #social .container p {
+        font-size: 35px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .head {
+        font-size: 50px;
+    }
+    .subhead {
+        font-size: 30px;
+    }
+    #about .container p,
+    #projects .project p,
+    #social .container p {
+        font-size: 30px;
+    }
+}
+
+.posts {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 180px;
+}
+.post-date {
+    margin-bottom: 0;
+    color: #615cfa;
+    font-family: "Inconsolata", monospace;
+}
+.post-title {
+    margin-bottom: 30px;
+    font-family: "HK Nova", sans-serif;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AppleScript and Terminal - make your life easier! | Dhaval Savalia</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lora" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="../wing.css">
+    <link rel="stylesheet" href="post.css">
+  </head>
+  <body>
+    <div class="container">
+      <a href="../" id="back">
+        <svg width="37" height="24" viewBox="0 0 37 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <title>Arrow</title>
+          <path id="back-arrow" d="M36.0607 1.06066c.5857-.585786.5857-1.535534 0-2.12132l-9.546-9.54594c-.5858-.5858-1.5355-.5858-2.1213 0-.5858.5858-.5858 1.53553 0 2.12132L32.8787 0l-8.4853 8.48528c-.5858.58579-.5858 1.53552 0 2.12132.5858.5858 1.5355.5858 2.1213 0l9.546-9.54594zM0 1.5h35v-3H0v3z" transform="rotate(180 18.5 6)" fill="#888"></path>
+        </svg>
+      </a>
+
+      <h1 class="post-title">AppleScript and Terminal - make your life easier!</h1>
+      <h4 class="post-date">November 15, 2017</h4>
+      <div class="post-content">
+        <p>Terminal is a great tool for many reason. It gets the job done very quickly, but it suck when you have to execute the same code over and over again. I use Raspberry Pi heedlessly, meaning I don't use separate monitor, mouse or keyboard to access Pi, instead I SSH into it. If you don't know what SSH is than, SS is a way to simply access a remote computer via Terminal.</p>
+        <p>Now let's break down the process of getting into a system via SSH:</p>
+        <ol>
+          <li>Open Terminal</li>
+          <li>type "ssh username@host"</li>
+          <li>type "yes" (only when system fingerprint is not added in known-hosts)</li>
+          <li>type password</li>
+        </ol>
+        <p>and there you go, now you are into a system via SSH. You can access that computer remotely. Good, huh? but if you do this process every single time you want to SSH. That can be a real pain. but AppleScript and Automator makes this process, just a matter of single click!</p>
+        <p>I am using Raspberry Pi for example. First thing to need to do is to write an AppleScript.</p>
+        <p>AppleScript start like this,</p>
+        
+        <pre><code>tell someone
+     to do something
+end tell</code></pre>
+        
+        <p>Okay, so we want to open terminal,</p>
+        
+        <pre><code>tell application "Terminal"
+     {{our process here}}
+end tell</code></pre>
+        
+        <p>Now we want to type "ssh username@host" or in Raspberry Pi's case "ssh pi@raspberrypi.local". but before that we need to set a tab to type in.</p>
+        
+        <pre><code>tell application "Terminal"
+     set currentTab to do script ("ssh pi@raspberrypi.local")
+end tell</code></pre>
+        
+        <p>If you noticed, after typing this command your Pi asks you to type "yes" to add IP in known-hosts, but this happens after 1 or 2 seconds delay, so:</p>
+        
+        <pre><code>tell application "Terminal"
+     set currentTab to do script ("ssh pi@raspberrypi.local")
+     delay 2
+     do script ("yes") in currentTab
+end tell</code></pre>
+        
+        <p>I guess, you get the idea what happed here. Next, we are asked to enter password, but that roughly happens after 1 or 2 seconds of delay/processing, so:</p>
+        
+        <pre><code>tell application "Terminal"
+     set currentTab to do script ("ssh pi@raspberrypi.local")
+     delay 2
+     do script ("yes") in currentTab
+     delay 1
+     do script ("raspberry")
+end tell</code></pre>
+        
+        <p>Here, passwords are just simple plain text, just invisible. So, here we are done with AppleScript part, it is called workflow. Now we need to add it into Automator, another great tool by Apple. Open Automator, go to File > New > Select Application and choose. Now from left bar, search for "Run AppleScript" and drag it to the right. Copy everything from recent workflow and paste in between <em>"on run {input, parameters}"</em> and <em>"end run"</em> with proper indentation and delete <em>"(* your script goes here *)"</em> and <em>"return input"</em>.</p>
+        <p>Save this as an application in Application directory as your desired name, and you're good to go.</p>
+        <p>Now just open the application that just created and it will open terminal and automatically login to Pi via SSH.</p>
+        <p>Good luck!</p>
+        
+      </div>
+
+    </div>
+
+  </body>
+</html>
